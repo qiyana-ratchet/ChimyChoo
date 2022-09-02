@@ -1,6 +1,5 @@
 package com.example.chimychoo
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -9,10 +8,7 @@ import android.widget.ImageView
 import androidx.databinding.DataBindingUtil
 import com.example.chimychoo.databinding.ActivityMainBinding
 import com.example.mytinder.auth.UserInfoModel
-import com.example.mytinder.slider.CardStackAdapter
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 import com.yuyakaido.android.cardstackview.CardStackLayoutManager
 import com.yuyakaido.android.cardstackview.CardStackListener
 import com.yuyakaido.android.cardstackview.CardStackView

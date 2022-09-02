@@ -1,4 +1,4 @@
-package com.example.mytinder.slider
+package com.example.chimychoo
 
 import android.content.Context
 import android.util.Log
@@ -9,16 +9,15 @@ import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.chimychoo.R
 import com.example.mytinder.auth.UserInfoModel
 
-class CardStackAdapter( val context : Context, val items : List<UserInfoModel> ) : RecyclerView.Adapter< CardStackAdapter.ViewHolder > () {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardStackAdapter.ViewHolder {
+class CardStackAdapter( val context : Context, val items : List<UserInfoModel> ) : RecyclerView.Adapter<CardStackAdapter.ViewHolder> () {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate( R.layout.item_card, parent, false )
         return ViewHolder( view )
     }
 
-    override fun onBindViewHolder(holder: CardStackAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding( items[position] )
     }
 

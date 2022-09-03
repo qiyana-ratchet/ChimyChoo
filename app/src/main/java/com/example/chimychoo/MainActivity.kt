@@ -8,6 +8,8 @@ import android.widget.ImageView
 import androidx.databinding.DataBindingUtil
 import com.example.chimychoo.databinding.ActivityMainBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.yuyakaido.android.cardstackview.CardStackLayoutManager
 import com.yuyakaido.android.cardstackview.CardStackListener
 import com.yuyakaido.android.cardstackview.CardStackView
@@ -54,6 +56,19 @@ class MainActivity : AppCompatActivity() {
         userDataList.add(UserInfoModel("playwithcat","애완동물과 놀기","m","애완묘가 있으신가요?","9","23409"))
         userDataList.add(UserInfoModel("boardgame","보드게임","m","친구들과 보드게임을 해보세요","10","23409"))
         Log.d("값", userDataList[0].nickname!!)
+        ///
+        val docData = hashMapOf(
+            "difficulty" to "easy",
+            "image" to "swimming",
+            "name" to "수영",
+            "explanation" to "수영은 심폐지구력 발달에 도움이 됩니다",
+        )
+        val db = Firebase.firestore
+        db.collection("Cards").document("hobby3")
+            .set(docData)
+            .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
+            .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
+        ///
 
         manager = CardStackLayoutManager( baseContext, object : CardStackListener {
 

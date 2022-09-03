@@ -7,7 +7,6 @@ import android.view.View
 import android.widget.ImageView
 import androidx.databinding.DataBindingUtil
 import com.example.chimychoo.databinding.ActivityMainBinding
-import com.example.mytinder.auth.UserInfoModel
 import com.google.firebase.auth.FirebaseAuth
 import com.yuyakaido.android.cardstackview.CardStackLayoutManager
 import com.yuyakaido.android.cardstackview.CardStackListener
@@ -34,8 +33,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView( this, R.layout.activity_main )
 
-//        auth = Firebase.auth
-
         val cardStackView : CardStackView = binding.cardStackView
         val menuIcon : ImageView = binding.menuIcon
 
@@ -46,7 +43,14 @@ class MainActivity : AppCompatActivity() {
             startActivity( intent )
         }
         */
-        userDataList.add(UserInfoModel("123","가나다","m","Seoul","20","23409"))
+        userDataList.add(UserInfoModel("jogging","가나다","m","Seoul","1","23409"))
+        userDataList.add(UserInfoModel("cafe","가나다2","m","Seoul","2","23409"))
+        userDataList.add(UserInfoModel("swimming","가나다2","m","Seoul","3","23409"))
+        userDataList.add(UserInfoModel("tennis","가나다2","m","Seoul","4","23409"))
+        userDataList.add(UserInfoModel("cooking","가나다2","m","Seoul","5","23409"))
+        userDataList.add(UserInfoModel("biking","가나다2","m","Seoul","6","23409"))
+        userDataList.add(UserInfoModel("reading","가나다2","m","Seoul","7","23409"))
+        userDataList.add(UserInfoModel("music","가나다2","m","Seoul","8","23409"))
         Log.d("값", userDataList[0].nickname!!)
 
         manager = CardStackLayoutManager( baseContext, object : CardStackListener {
@@ -56,10 +60,6 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onCardSwiped(direction: Direction?) {
-                userDataList.add(UserInfoModel("123","가나다","m","Seoul","20","23409"))
-
-                Log.d("유저", "이거지"+userDataList[1].toString())
-                cardStackAdapter.notifyDataSetChanged()
 
 /**                when(direction) {
                     Direction.Left -> {

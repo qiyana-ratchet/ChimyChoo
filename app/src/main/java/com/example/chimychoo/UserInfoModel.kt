@@ -1,4 +1,4 @@
-package com.example.mytinder.auth
+package com.example.chimychoo
 
 class UserInfoModel (
     val uid : String? = null,

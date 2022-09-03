@@ -9,7 +9,10 @@ import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mytinder.auth.UserInfoModel
+import com.bumptech.glide.Glide
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
 
 class CardStackAdapter( val context : Context, val items : List<UserInfoModel> ) : RecyclerView.Adapter<CardStackAdapter.ViewHolder> () {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -35,17 +38,17 @@ class CardStackAdapter( val context : Context, val items : List<UserInfoModel> )
         val left_overlay = itemView.findViewById<FrameLayout>(R.id.left_overlay)
         val right_overlay = itemView.findViewById<FrameLayout>(R.id.right_overlay)
 
-        fun binding( user : UserInfoModel ) {
+        fun binding( user : UserInfoModel) {
 
             // 오버레이 아이콘 최상단으로 가져오기.
             left_overlay.bringToFront()
             right_overlay.bringToFront()
-            /////////////////////////////김태현
+            /////////////////////////////
             Log.d("유저",user.toString())
-            profileImageArea.setImageResource(R.drawable.img)
-            /////////////////////////////김태현
-/**            // 카드 스택 뷰에 프로필 사진 가져와서 Glide로 적용시키기.
-            val profileImageRef = FirebaseRef.storageRef.child("${user.uid}.png")
+//            profileImageArea.setImageResource(R.drawable.img)
+            /////////////////////////////
+            // 카드 스택 뷰에 프로필 사진 가져와서 Glide로 적용시키기.
+            val profileImageRef = Firebase.storage.reference.child("${user.uid}.png")
             profileImageRef.downloadUrl.addOnCompleteListener(OnCompleteListener { task ->
                 if( task.isSuccessful ) {
                     Glide.with(context)
@@ -53,7 +56,7 @@ class CardStackAdapter( val context : Context, val items : List<UserInfoModel> )
                         .into(profileImageArea)
                 }
             })
-**/
+
 
             // 텍스트 바인딩.
             nicknameArea.text = user.nickname

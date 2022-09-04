@@ -33,22 +33,11 @@ class YoutubeTracker : AppCompatActivity() {
             startActivity(Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS))
         } else {
             // We have the permission. Query app usage stats.
+            Log.d("테스트", "리스트 사이즈 : ${getAppUsageStats().size}")
+//            Log.d("테스트", "리스트 목록 : ${getAppUsageStats()}")
+            showAppUsageStats(getAppUsageStats())
         }
-//        val statsManager = getSystemService(Context.USAGE_STATS_SERVICE) as UsageStatsManager
-//        var list : MutableList<UsageStats>
-//        //Check if API is 21
-//        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP)
-//        {
-//            val cal = Calendar.getInstance()
-//            cal.add(Calendar.YEAR, -1)
-//
-//            list = statsManager.queryUsageStats(UsageStatsManager.INTERVAL_DAILY, cal.timeInMillis, System.currentTimeMillis())
-//            Log.d("테스트","리스트 사이즈 : $list.size")
-//            Log.d("테스트", "리스트 목록 : $list")
-//        }
-//        Log.d("테스트","---------------메인액티비티 시작 ")
-//        val intent = Intent( this, MainActivity::class.java )
-//        startActivity( intent )
+
     }
 
     private fun checkForPermission(): Boolean {
@@ -67,5 +56,25 @@ class YoutubeTracker : AppCompatActivity() {
             UsageStatsManager.INTERVAL_DAILY, cal.timeInMillis, System.currentTimeMillis() // 3
         )
         return queryUsageStats
+    }
+
+    private fun showAppUsageStats(usageStats: MutableList<UsageStats>) {
+        usageStats.sortWith(Comparator { right, left ->
+            compareValues(left.lastTimeUsed, right.lastTimeUsed)
+        })
+
+        usageStats.forEach { it ->
+            Log.d("테스트", "packageName: ${it.packageName}, lastTimeUsed: ${Date(it.lastTimeUsed)}, " +
+                    "totalTimeInForeground: ${it.totalTimeInForeground}")
+        }
+    }
+
+    private fun getYoutube(){
+        //TODO : for문 문자열 파싱해서 com.google.android.youtube 데이터 추출하기
+        //Log.d("형민", "이거뜨면 잘되는거임 ㅋㅋ")
+    }
+
+    private fun checkLastTimeChanged(){
+        //TODO : 날짜가 바뀌었는지 비교해서 true, false 값 return 해주는 함수 작성하기
     }
 }

@@ -21,6 +21,10 @@
             android:exported="true">
         </activity>
         <activity
+            android:name=".YoutubeTracker"
+            android:exported="true">
+        </activity>
+        <activity
             android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>

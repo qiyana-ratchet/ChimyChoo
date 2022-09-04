@@ -43,10 +43,10 @@ class LoginActivity : AppCompatActivity() {
         val signInGoogleBtn: SignInButton = findViewById(R.id.googleLoginBtn)
         setGoogleButtonText(signInGoogleBtn, "Start with Google Account")
 
-        ///
-        FirebaseAuth.getInstance().signOut();
-        googleSignInClient!!.signOut()
-        ///
+
+//        FirebaseAuth.getInstance().signOut()//자동로그인 해제
+//        googleSignInClient!!.signOut()//자동로그인 해제
+
         val user = Firebase.auth.currentUser
         if (user != null) {
             // User is signed in

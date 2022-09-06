@@ -29,7 +29,7 @@
             android:layout_margin="5dp"
             android:text="CHIMY CHOO"
             android:textAlignment="center"
-            android:textColor="#8BC34A"
+            android:textColor="#BC2F41"
             android:textSize="40sp" />
 
         <TextView

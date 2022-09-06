@@ -19,8 +19,6 @@ import java.util.*
 
 class YoutubeTracker : AppCompatActivity() {
 
-    //lateinit var used_time
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 //        startActivity(Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS)); // 권한 주는 코드
@@ -66,22 +64,17 @@ class YoutubeTracker : AppCompatActivity() {
         })
 
         usageStats.forEach { it ->
-            /*Log.d("테스트", "packageName: ${it.packageName}, lastTimeUsed: ${Date(it.lastTimeUsed)}, " +
+            Log.d("테스트", "packageName: ${it.packageName}, lastTimeUsed: ${Date(it.lastTimeUsed)}, " +
                     "totalTimeInForeground: ${it.totalTimeInForeground}")
-
-             */
-            if(it.packageName=="com.google.android.youtube"){
-                Log.d("성공성공성공성공","유튜브--------------------: ${Date(it.lastTimeUsed)}")
-                Log.d("성공성공성공","유튜브 시간 ---:${Date(it.lastTimeUsed)}")
-
-
-            }
         }
     }
 
-
+    private fun getYoutube(){
+        //TODO : for문 문자열 파싱해서 com.google.android.youtube 데이터 추출하기
+        //Log.d("형민", "이거뜨면 잘되는거임 ㅋㅋ")
+    }
 
     private fun checkLastTimeChanged(){
-        //TODO : 실행시간이 바뀌었는지 비교해서 true, false 값 return 해주는 함수 작성하기
+        //TODO : 날짜가 바뀌었는지 비교해서 true, false 값 return 해주는 함수 작성하기
     }
 }

@@ -1,16 +1,23 @@
 package com.example.chimychoo
 
+import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.databinding.DataBindingUtil
+import com.example.chimychoo.UserInfo.userInfoEmail
 import com.example.chimychoo.databinding.ActivityMainBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
 import com.yuyakaido.android.cardstackview.CardStackLayoutManager
 import com.yuyakaido.android.cardstackview.CardStackListener
 import com.yuyakaido.android.cardstackview.CardStackView
@@ -30,12 +37,12 @@ class MainActivity : AppCompatActivity() {
     private lateinit var myGender: String
 
     private val TAG = MainActivity::class.java.simpleName
+    var storage = FirebaseStorage.getInstance()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-
         val cardStackView: CardStackView = binding.cardStackView
         val menuIcon: ImageView = binding.menuIcon
 
@@ -44,13 +51,13 @@ class MainActivity : AppCompatActivity() {
 //        val intent = Intent( this, MenuActivity::class.java )
 //        startActivity( intent )
 //        }
-        Log.d("테스트","---------------유튜브트래커 시작")
-        val intent = Intent( this, YoutubeTracker::class.java )
-        startActivity( intent )
-        Log.d("테스트","---------------유튜브트래커 종료")
+//        Log.d("테스트","---------------유튜브트래커 시작")
+//        val intent = Intent( this, YoutubeTracker::class.java )
+//        startActivity( intent )
+//        Log.d("테스트","---------------유튜브트래커 종료")
 
-
-
+        userDataList.clear() //data 초기화
+        initDialog() // 다이얼로그 초기화
         loadCardData() // 카드 데이터 로딩
         manager = CardStackLayoutManager(baseContext, object : CardStackListener {
 
@@ -148,6 +155,26 @@ class MainActivity : AppCompatActivity() {
                 Log.d(TAG, "Error getting documents: ", exception)
             }
     }
+
+    private val GALLERY = 1
+    private fun initDialog() {
+        binding.addButton.setOnClickListener {
+            val intent = Intent(this, AddHobbyActivity::class.java)
+            startActivity(intent)
+
+//            val dialog = AddHobbyDialog(this)
+//            dialog.showDialog()
+//            dialog.onDismissedClickListener(object :
+//                AddHobbyDialog.OnPlanCreateClickListener {
+//                override fun onPlanCreateClick(name: String) {
+////                    initRecyclerView()
+//                }
+//            })
+
+        }
+
+    }
+
 
 }
 

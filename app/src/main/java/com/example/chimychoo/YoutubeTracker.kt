@@ -31,13 +31,14 @@ class YoutubeTracker : AppCompatActivity() {
     public var time_used = 0
 
     public var tenminute_control = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
 //        startActivity(Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS)); // 권한 주는 코드
-        timer(period = 5000,)
+        timer(period = 10000,)
         {
-            Log.d("1분 테스트","1분 지났나?")
+
             usageStatsInit()
         }
 
@@ -100,8 +101,8 @@ class YoutubeTracker : AppCompatActivity() {
                     if(tenminute_control%2 ==1)
                     {
                         Log.d("유튜브 켜짐","유튜브 켜짐")
-
-                    }
+                        //tenminute_control이 홀수면 유튜브가 켜졌다고 뜸뜸
+                   }
                     else
                     {
                         Log.d("유튜브 꺼짐","유튜브 꺼짐")

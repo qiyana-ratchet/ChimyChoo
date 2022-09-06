@@ -30,6 +30,8 @@
             android:text="CHIMY CHOO"
             android:textAlignment="center"
             android:textColor="#BC2F41"
+            android:textColorHighlight="#872B2B"
+            android:textColorLink="#7E3C3C"
             android:textSize="40sp" />
 
         <TextView

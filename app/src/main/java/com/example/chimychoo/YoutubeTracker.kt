@@ -17,16 +17,30 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import java.util.*
+//밑으로는 현재 시간 불러오기
+import java.util.Locale
+import java.text.SimpleDateFormat
+import java.util.Date
+//timer
+import kotlin.concurrent.timer
 
 
 class YoutubeTracker : AppCompatActivity() {
 
 
+    public var time_used = 0
+
+    public var tenminute_control = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
 //        startActivity(Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS)); // 권한 주는 코드
-        usageStatsInit()
+        timer(period = 5000,)
+        {
+            Log.d("1분 테스트","1분 지났나?")
+            usageStatsInit()
+        }
+
     }
 
     private fun usageStatsInit() {
@@ -73,11 +87,43 @@ class YoutubeTracker : AppCompatActivity() {
                     "totalTimeInForeground: ${it.totalTimeInForeground}")
 
              */
+
+
             if(it.packageName=="com.google.android.youtube"){
-                Log.d("성공성공성공성공","유튜브-lastTimestamp: ${Date(it.lastTimeStamp)}")
-                Log.d("성공성공성공","유튜브-firstTimestamp: ${Date(it.firstTimeStamp)}")
-                Log.d("성공성공","유튜브 최근 실행한 시간 ---:${Date(it.lastTimeUsed)}")
-                Log.d("성공","유튜브 실행한 총 시간 4: ${it.totalTimeInForeground}")
+                Log.d("성공1","유튜브-lastTimestamp: ${Date(it.lastTimeStamp)}")
+                Log.d("성공2","유튜브-firstTimestamp: ${Date(it.firstTimeStamp)}")
+                Log.d("성공3","유튜브 최근 실행한 시간 ---:${Date(it.lastTimeUsed)}")
+                Log.d("성공4","유튜브 실행한 총 시간 4: ${it.totalTimeInForeground}")
+                Log.d("시간확인1","유튜브를 실행했는지 1분내로 확인.time_used : ${time_used}")
+                if (it.totalTimeInForeground.toInt() > time_used)
+                {
+                    if(tenminute_control%2 ==1)
+                    {
+                        Log.d("유튜브 켜짐","유튜브 켜짐")
+
+                    }
+                    else
+                    {
+                        Log.d("유튜브 꺼짐","유튜브 꺼짐")
+                    }
+                    Log.d("시간확인2","유튜브를 실행했는지 1분내로 확인.time_used : ${time_used}")
+
+                    tenminute_control++
+                }
+
+                time_used = it.totalTimeInForeground.toInt()
+                Log.d("시간확인3","유튜브를 실행했는지 1분내로 확인.time_used : ${time_used}")
+                /*
+                // 현재시간을 가져오기
+                val long_now = System.currentTimeMillis()
+
+                Log.d("현재시간 가져오기 ","현재 시간: ${Date(long_now)}")
+
+                if(Date(it.lastTimeUsed)==Date(long_now))
+                {
+                    Log.d("현재시간 가져오기 성공","현재 시간: ${Date(long_now)}")
+                }
+                */
 
             }
 

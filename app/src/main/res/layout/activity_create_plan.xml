@@ -137,21 +137,28 @@
                 android:textColor="@color/black"
                 android:textSize="13sp" />
 
-            <Button
-                android:id="@+id/addPicButton"
-                android:layout_width="158dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="right"
-                android:layout_marginHorizontal="0dp"
-                android:layout_weight="1"
-                android:backgroundTint="#BC2F41"
-                android:fontFamily="@font/bmjua_ttf"
-                android:text="사진 추가"
-                android:textSize="12sp" />
         </LinearLayout>
 
+        <ImageView
+            android:id="@+id/userImg"
+            android:layout_width="match_parent"
+            android:layout_height="168dp"
+            tools:srcCompat="@tools:sample/avatars" />
+
         <Button
-            android:id="@+id/detailWorkAddBtn"
+            android:id="@+id/addPicButton"
+            android:layout_width="158dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:layout_marginHorizontal="0dp"
+            android:layout_weight="1"
+            android:backgroundTint="#BC2F41"
+            android:fontFamily="@font/bmjua_ttf"
+            android:text="사진 추가"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/AddFinishBtn"
             android:layout_width="65dp"
             android:layout_height="45dp"
             android:layout_gravity="right"

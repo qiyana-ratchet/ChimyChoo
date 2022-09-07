@@ -46,17 +46,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         val cardStackView: CardStackView = binding.cardStackView
-        val menuIcon: ImageView = binding.menuIcon
+
 
 //        menuIcon.setOnClickListener {
 //        // 마이페이지로 이동.
 //        val intent = Intent( this, MenuActivity::class.java )
 //        startActivity( intent )
 //        }
-//        Log.d("테스트","---------------유튜브트래커 시작")
-//        val intent = Intent( this, YoutubeTracker::class.java )
-//        startActivity( intent )
-//        Log.d("테스트","---------------유튜브트래커 종료")
+        Log.d("테스트","---------------유튜브트래커 시작")
+        val intent = Intent( this, YoutubeTracker::class.java )
+        startActivity( intent )
+        Log.d("테스트","---------------유튜브트래커 종료")
 
         userDataList.clear() //data 초기화
         initDialog() // 다이얼로그 초기화

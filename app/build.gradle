@@ -48,6 +48,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     implementation "androidx.activity:activity-ktx:1.5.1"
 
+
     // Google Play Services
     implementation 'com.google.android.gms:play-services-auth:20.2.0'
 
@@ -67,4 +68,9 @@ dependencies {
 
     // CardStackView
     implementation 'com.yuyakaido.android:card-stack-view:2.3.4'
+
+    //notification
+
+
+
 }

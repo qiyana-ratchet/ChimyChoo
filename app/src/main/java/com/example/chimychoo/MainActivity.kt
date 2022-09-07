@@ -54,8 +54,8 @@ class MainActivity : AppCompatActivity() {
 //        val intent = Intent( this, MenuActivity::class.java )
 //        startActivity( intent )
 //        }
-        if (youtubeFlag==0) {
-            youtubeFlag=1
+        if (youtubeFlag == 0) {
+            youtubeFlag = 1
             Log.d("테스트", "---------------유튜브트래커 시작")
             val intent = Intent(this, YoutubeTracker::class.java)
             startActivity(intent)
@@ -97,16 +97,14 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 else -> {}
-                }
+                }*/
                 userCount += 1
 
-                if( userCount == userDataList.count() ) {
-
-                getUserDataList( myGender )
-
-                userCount = 0
-
-                }*/
+                if (userCount == userDataList.count()) {
+                    loadCardData()
+                    userCount = 0 //초기화
+                    userDataList.clear() //초기화
+                }
 
             }
 

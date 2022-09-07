@@ -97,9 +97,9 @@ class YoutubeTracker : AppCompatActivity() {
         })
 
         usageStats.forEach { it ->
-            /*Log.d("테스트", "packageName: ${it.packageName}, lastTimeUsed: ${Date(it.lastTimeUsed)}, " +
+            Log.d("테스트", "packageName: ${it.packageName}, lastTimeUsed: ${Date(it.lastTimeUsed)}, " +
                     "totalTimeInForeground: ${it.totalTimeInForeground}")
-             */
+
 
             if(it.packageName=="com.google.android.youtube"){
                 Log.d("성공1","유튜브-lastTimestamp: ${Date(it.lastTimeStamp)}")
@@ -127,6 +127,7 @@ class YoutubeTracker : AppCompatActivity() {
 
                 time_used = it.totalTimeInForeground.toInt()
                 Log.d("시간확인3","유튜브를 실행했는지 1분내로 확인.time_used : ${time_used}")
+                return
                 /*
                 // 현재시간을 가져오기
                 val long_now = System.currentTimeMillis()

@@ -45,6 +45,10 @@ class AddHobbyActivity : AppCompatActivity() {
             intent.type = "image/*"
             startActivityForResult(intent, GALLERY)
         }
+        binding.createCancelBtn.setOnClickListener{
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
 
         binding.AddFinishBtn.setOnClickListener {
             if (!binding.hobbyTitle.equals("") && !binding.hobbyInfo.equals("")) {
@@ -85,7 +89,7 @@ class AddHobbyActivity : AppCompatActivity() {
                 var imageData: Uri? = data?.data
                 val storageRef = storage.reference
                 val profileRef =
-                    storageRef.child("${imageData?.lastPathSegment}")
+                    storageRef.child("${imageData?.lastPathSegment}.png")
                 val profilePathName = imageData?.lastPathSegment.toString()
                 userNewDocumentName = profilePathName
                 val db = Firebase.firestore

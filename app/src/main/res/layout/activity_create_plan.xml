@@ -114,7 +114,7 @@
                 android:fontFamily="@font/bmjua_ttf"
                 android:gravity="center"
                 android:hint="설명을 적어주세요"
-                android:inputType="datetime"
+                android:inputType="textMultiLine"
                 android:textColor="@color/black"
                 android:textColorLink="#7E2929"
                 android:textSize="13sp" />

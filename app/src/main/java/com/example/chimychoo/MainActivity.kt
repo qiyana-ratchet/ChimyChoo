@@ -22,6 +22,8 @@ import com.yuyakaido.android.cardstackview.CardStackLayoutManager
 import com.yuyakaido.android.cardstackview.CardStackListener
 import com.yuyakaido.android.cardstackview.CardStackView
 import com.yuyakaido.android.cardstackview.Direction
+import java.util.*
+import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -135,7 +137,7 @@ class MainActivity : AppCompatActivity() {
             .get()
             .addOnSuccessListener { result ->
                 for (document in result) {
-                    Log.d(TAG, "${document.id} => ${document.data}")
+                    Log.d("테스트", "${document.id} => ${document.data}")
 //                    Log.d(TAG, "${document.data["difficulty"]}")
                     userDataList.add(
                         UserInfoModel(
@@ -148,6 +150,7 @@ class MainActivity : AppCompatActivity() {
                         )
                     )
                 }
+                userDataList.shuffle() //TODO: 카드 랜덤 섞기
                 cardStackAdapter.notifyDataSetChanged()
                 Log.d(TAG, userDataList[0].nickname.toString())
             }

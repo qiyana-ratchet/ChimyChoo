@@ -41,12 +41,14 @@ class YoutubeTracker : AppCompatActivity() {
 
     public var tenminute_control = 0
 
+    public var isit_oneminute = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         createNotificationChannel(CHANNEL_ID, "testChannel", "this is a test Channel")
 //        startActivity(Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS)); // 권한 주는 코드
-        timer(period = 10000,)
+        timer(period = 5000,)//주기 5초
         {
 
             usageStatsInit()
@@ -116,6 +118,7 @@ class YoutubeTracker : AppCompatActivity() {
                     else
                     {
                         Log.d("유튜브 꺼짐","유튜브 꺼짐")
+                        notificationManager?.cancelAll()
                     }
                     Log.d("시간확인2","유튜브를 실행했는지 1분내로 확인.time_used : ${time_used}")
 

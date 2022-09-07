@@ -44,7 +44,7 @@ class CardStackAdapter( val context : Context, val items : List<UserInfoModel> )
             left_overlay.bringToFront()
             right_overlay.bringToFront()
             /////////////////////////////
-            Log.d("유저",user.toString())
+            Log.d("유저",user.uid.toString())
 //            profileImageArea.setImageResource(R.drawable.img)
             /////////////////////////////
             // 카드 스택 뷰에 프로필 사진 가져와서 Glide로 적용시키기.

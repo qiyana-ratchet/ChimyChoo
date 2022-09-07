@@ -55,8 +55,7 @@ class LoginActivity : AppCompatActivity() {
         } else {
             // No user is signed in
         }
-        //TODO: Log.d 추가하기
-        //TODO: Code cleanup
+
         signInGoogleBtn.setOnClickListener {
             val signInIntent = googleSignInClient!!.signInIntent
             startActivityForResult(signInIntent, 9001)

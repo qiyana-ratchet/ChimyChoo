@@ -20,6 +20,7 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
+import kotlinx.coroutines.Dispatchers.Main
 import java.util.*
 //밑으로는 현재 시간 불러오기
 import java.util.Locale
@@ -50,7 +51,8 @@ class YoutubeTracker : AppCompatActivity() {
 
             usageStatsInit()
         }
-
+        val intent = Intent( this, MainActivity::class.java )
+        startActivity( intent )
     }
 
     private fun usageStatsInit() {

@@ -12,6 +12,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import com.example.chimychoo.UserInfo.userInfoEmail
+import com.example.chimychoo.UserInfo.youtubeFlag
 import com.example.chimychoo.databinding.ActivityMainBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.SetOptions
@@ -53,11 +54,14 @@ class MainActivity : AppCompatActivity() {
 //        val intent = Intent( this, MenuActivity::class.java )
 //        startActivity( intent )
 //        }
-        Log.d("테스트","---------------유튜브트래커 시작")
-        val intent = Intent( this, YoutubeTracker::class.java )
-        startActivity( intent )
-        Log.d("테스트","---------------유튜브트래커 종료")
+        if (youtubeFlag==0) {
+            youtubeFlag=1
+            Log.d("테스트", "---------------유튜브트래커 시작")
+            val intent = Intent(this, YoutubeTracker::class.java)
+            startActivity(intent)
+            Log.d("테스트", "---------------유튜브트래커 종료")
 
+        }
         userDataList.clear() //data 초기화
         initDialog() // 다이얼로그 초기화
         loadCardData() // 카드 데이터 로딩
@@ -150,7 +154,7 @@ class MainActivity : AppCompatActivity() {
                         )
                     )
                 }
-                userDataList.shuffle() //TODO: 카드 랜덤 섞기
+                userDataList.shuffle() //카드 랜덤 섞기
                 cardStackAdapter.notifyDataSetChanged()
                 Log.d(TAG, userDataList[0].nickname.toString())
             }

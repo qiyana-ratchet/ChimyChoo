@@ -48,7 +48,7 @@ class YoutubeTracker : AppCompatActivity() {
 
         createNotificationChannel(CHANNEL_ID, "testChannel", "this is a test Channel")
 //        startActivity(Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS)); // 권한 주는 코드
-        timer(period = 5000,)//주기 5초
+        timer(period = 3000,)//주기 3초
         {
 
             usageStatsInit()
